@@ -1,0 +1,11 @@
+services:
+  web:
+    image: ghcr.io/mgcha85/backtest-dashboard:latest
+    container_name: backtest-dashboard
+    ports:
+      - "5173:3000"
+    volumes:
+      - ./data/backtest_results.db:/data/backtest_results.db:rw
+    environment:
+      - DB_PATH=/data/backtest_results.db
+    restart: unless-stopped
